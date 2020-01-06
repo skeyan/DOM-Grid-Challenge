@@ -20,22 +20,20 @@ function addRow() {
     }
     
     mainGrid.appendChild(newRow);                           // append newRow to mainGrid
-    amountofRows++;                                         // and update the count
+    amountOfRows++;                                         // and update the count
 }
 
 // once the function is done, need to add the event listener and handler
 
 function addColumn() {
-    /*
+    
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
-    let cell = document.createElement("td");
+    
     for (let i = 0; i < amountOfRows; i++) {
-        mainGrid.rows[i].appendChild(cell);
-        
+        mainGrid.rows[i].appendChild(document.createElement("td")); 
     }
     amountOfColumns++;
-    */
 }
 
 function removeRow() {
@@ -46,6 +44,7 @@ function removeRow() {
 }
 
 function removeColumn() {
+
 
 }
 

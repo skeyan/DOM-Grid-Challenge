@@ -75,4 +75,13 @@ function fillAllCells() {
 
 function fillEmptyCells() {
 
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    for (let i = 0; i < amountOfRows; i++) {
+        for (let j = 0; j < amountOfColumns; j++) {
+
+            mainGrid.rows[i].cells[j].style.backgroundColor = "red";       // CHANGE TO DEFAULTCOLOR 
+        }
+    }
 }

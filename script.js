@@ -45,6 +45,13 @@ function removeRow() {
 
 function removeColumn() {
 
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    for (let i = 0; i < amountOfRows; i++) {
+        mainGrid.rows[i].removeChild(mainGrid.rows[i].lastChild); 
+    }
+    amountOfColumns--;
 
 }
 

@@ -4,6 +4,8 @@
 let amountOfRows = 1;
 let amountOfColumns = 2;
 
+let defaultColor = "#96e3c0";
+
 function addRow() {
     // grab the main table and append a row to it with the same number of columns
     // add an id to the table so we can identify it
@@ -57,6 +59,14 @@ function removeColumn() {
 
 function clearCells() {
 
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    for (let i = 0; i < amountOfRows; i++) {
+        for (let j = 0; j < amountOfColumns; j++) {
+            mainGrid.rows[i].cells[j].style.backgroundColor = "red";       // CHANGE TO DEFAULTCOLOR 
+        }
+    }
 }
 
 function fillAllCells() {

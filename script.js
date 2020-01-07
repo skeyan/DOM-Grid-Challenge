@@ -1,8 +1,18 @@
 
 // a function that will add a row to the grid
 
-let amountOfRows = 1;
+let amountOfRows = 2;
 let amountOfColumns = 2;
+
+let color1 = "#96e3c0";
+let color2 = "#ffc0cb";
+let color3 = "#7e3f12";
+let color4 = "#cd3333";
+let color5 = "#ee7621";
+// let palette = [color1, color2, color3, color4, color5];
+let palette = ["default", "algae", "pink", "copper", "red", "tango"]
+let colorIndex = 0;
+let currentColor = palette[colorIndex];
 
 function addRow() {
     // grab the main table and append a row to it with the same number of columns
@@ -15,7 +25,8 @@ function addRow() {
     // populate the row with squares/cells aka TD elements
     // loop through the grid's amountofColumns
     for (let i = 0; i < amountOfColumns; i++) {
-        let cell = document.createElement("td");            // td element is created
+        var cell = document.createElement("td");
+        cell.setAttribute("class", "default");
         newRow.appendChild(cell);                           // and appended to newRow
     }
     
@@ -23,15 +34,15 @@ function addRow() {
     amountOfRows++;                                         // and update the count
 }
 
-// once the function is done, need to add the event listener and handler
-
 function addColumn() {
     
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
     for (let i = 0; i < amountOfRows; i++) {
-        mainGrid.rows[i].appendChild(document.createElement("td")); 
+        var cell = document.createElement("td");
+        cell.setAttribute("class", "default");
+        mainGrid.rows[i].appendChild(cell); 
     }
     amountOfColumns++;
 }
@@ -55,14 +66,82 @@ function removeColumn() {
 
 }
 
+function cycleColor() {
+    colorIndex = (colorIndex + 1) % palette.length;
+    currentColor = palette[colorIndex];
+}
+
 function clearCells() {
 
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    /*
+    for (let i = 0; i < amountOfRows; i++) {
+        for (let j = 0; j < amountOfColumns; j++) {
+            mainGrid.rows[i].cells[j].style.backgroundColor = defaultColor;
+        }
+    }
+    */
+    
+    var items = mainGrid.getElementsByTagName("td");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = "default";
+    }
 }
 
 function fillAllCells() {
 
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    /*
+    for (let i = 0; i < amountOfRows; i++) {
+        for (let j = 0; j < amountOfColumns; j++) {
+            mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
+        }
+    }
+    */
+    
+    var items = mainGrid.getElementsByTagName("td");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = currentColor;
+    }
 }
 
 function fillEmptyCells() {
 
+    // document.getElementsByTagName("tbody")[0]
+    let mainGrid = document.getElementById("main-grid");
+    mainGrid = mainGrid.getElementsByTagName("tbody")[0];
+    
+    /*
+    for (let i = 0; i < amountOfRows; i++) {
+        for (let j = 0; j < amountOfColumns; j++) {
+            if (mainGrid.rows[i].cells[j].style.backgroundColor == defaultColor) {
+                mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
+            }
+        }
+    }
+    */
+    
+    var items = mainGrid.querySelectorAll("td.default");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = currentColor;
+    }
+    
 }
+
+/*
+window.addEventListener('click', function(event) {
+    const target = event.target; // what you clicked on
+    if(target.tagName !== 'DIV') {
+        return; // not a <div>, stop the function
+    }
+
+    const color = target.style.color;
+    target.style.color = color? '' : 'red';
+});
+*/
+
+

@@ -1,5 +1,29 @@
 td {
     height: 40px;
-    width:40px;
+    width: 40px; 
+}
+
+td.default {
+    background: #e6e6e6;
+}
+
+td.algae {
     background: #96e3c0;
 }
+
+td.pink {
+    background: #ffc0cb;
+}
+
+td.copper {
+    background: #7e3f12;
+}
+
+td.red {
+    background: #cd3333;
+}
+
+td.tango {
+    background: #ee7621;
+}
+

@@ -12,13 +12,19 @@
     <button onclick="addColumn()">Add a column</button>
     <button onclick="removeRow()">Remove a row</button>
     <button onclick="removeColumn()">Remove a column</button>
-    <button class="dropbtn">Color chooser</button>
+    
+    <button onclick="cycleColor()">Cycle color</button>	 
+
     <table id="main-grid">
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
+                <td class="default"></td>
+                <td class="default"></td>
             </tr>
+            <tr>
+                <td class="default"></td>
+                <td class="default"></td>
+            </tr> 
         </tbody>
     </table>
     <button onclick="clearCells()">Clear all cells</button>

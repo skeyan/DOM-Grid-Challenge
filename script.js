@@ -2,9 +2,11 @@
 let amountOfRows = 2;
 let amountOfColumns = 2;
 
-let palette = ["default", "algae", "pink", "copper", "red", "tango"]
-let colorIndex = 0;
-let currentColor = palette[colorIndex];
+// let palette = ["default", "algae", "pink", "copper", "red", "tango"]
+// let colorIndex = 0;
+//let currentColor = palette[colorIndex];
+let numColors = 6;
+let currentColor = "default";
 
 let penDown = false;
 
@@ -64,23 +66,37 @@ function removeColumn() {
 
 };
 
-function cycleColor() {
-    colorIndex = (colorIndex + 1) % palette.length;
-    currentColor = palette[colorIndex];
-};
+// function cycleColor() {
+    // colorIndex = (colorIndex + 1) % palette.length;
+    // currentColor = palette[colorIndex];
+// }
+
+function updateSelectedColor() {
+    if(document.getElementById("default").selected == true) {
+        currentColor = "default";
+    }
+    else if(document.getElementById("algae").selected == true) {
+        currentColor = "algae";
+    }
+    else if(document.getElementById("pink").selected == true) {
+        currentColor = "pink";
+    }
+    else if(document.getElementById("copper").selected == true) {
+        currentColor = "copper";
+    }
+    else if(document.getElementById("red").selected == true) {
+        currentColor = "red";
+    }
+    else if(document.getElementById("tango").selected == true) {
+        currentColor = "tango";
+    }
+}   
 
 function clearCells() {
 
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
-    /*
-    for (let i = 0; i < amountOfRows; i++) {
-        for (let j = 0; j < amountOfColumns; j++) {
-            mainGrid.rows[i].cells[j].style.backgroundColor = defaultColor;
-        }
-    }
-    */
     
     var items = mainGrid.getElementsByTagName("td");
     for (let i = 0; i < items.length; i++) {
@@ -92,14 +108,7 @@ function fillAllCells() {
 
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
-    
-    /*
-    for (let i = 0; i < amountOfRows; i++) {
-        for (let j = 0; j < amountOfColumns; j++) {
-            mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
-        }
-    }
-    */
+
     
     var items = mainGrid.getElementsByTagName("td");
     for (let i = 0; i < items.length; i++) {
@@ -113,34 +122,13 @@ function fillEmptyCells() {
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
-    /*
-    for (let i = 0; i < amountOfRows; i++) {
-        for (let j = 0; j < amountOfColumns; j++) {
-            if (mainGrid.rows[i].cells[j].style.backgroundColor == defaultColor) {
-                mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
-            }
-        }
-    }
-    */
     
     var items = mainGrid.querySelectorAll("td.default");
     for (let i = 0; i < items.length; i++) {
         items[i].className = currentColor;
     }
-    
 };
 
-/*
-window.addEventListener('click', function(event) {
-    const target = event.target; // what you clicked on
-    if(target.tagName !== 'DIV') {
-        return; // not a <div>, stop the function
-    }
-
-    const color = target.style.color;
-    target.style.color = color? '' : 'red';
-});
-*/
 
 document.addEventListener("mousedown", setPenDown);
 document.addEventListener("mouseup", setPenUp);

@@ -4,16 +4,15 @@
 let amountOfRows = 2;
 let amountOfColumns = 2;
 
-let defaultColor = "#e6e6e6";
-let currentColor = "#96e3c0";
-
 let color1 = "#96e3c0";
 let color2 = "#ffc0cb";
 let color3 = "#7e3f12";
 let color4 = "#cd3333";
 let color5 = "#ee7621";
-let palette = [color1, color2, color3, color4, color5];
+// let palette = [color1, color2, color3, color4, color5];
+let palette = ["default", "algae", "pink", "copper", "red", "tango"]
 let colorIndex = 0;
+let currentColor = palette[colorIndex];
 
 function addRow() {
     // grab the main table and append a row to it with the same number of columns
@@ -23,10 +22,13 @@ function addRow() {
     // make the row to be appended to the table on the DOM
     let newRow = document.createElement("tr");              // element is created, but not linked to DOM
     
+
+    
     // populate the row with squares/cells aka TD elements
     // loop through the grid's amountofColumns
     for (let i = 0; i < amountOfColumns; i++) {
-        let cell = document.createElement("td");            // td element is created
+        var cell = document.createElement("td");
+        cell.setAttribute("class", "default");
         newRow.appendChild(cell);                           // and appended to newRow
     }
     
@@ -42,7 +44,9 @@ function addColumn() {
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
     for (let i = 0; i < amountOfRows; i++) {
-        mainGrid.rows[i].appendChild(document.createElement("td")); 
+        var cell = document.createElement("td");
+        cell.setAttribute("class", "default");
+        mainGrid.rows[i].appendChild(cell); 
     }
     amountOfColumns++;
 }
@@ -76,10 +80,17 @@ function clearCells() {
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
+    /*
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
             mainGrid.rows[i].cells[j].style.backgroundColor = defaultColor;
         }
+    }
+    */
+    
+    var items = mainGrid.getElementsByTagName("td");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = "default";
     }
 }
 
@@ -88,10 +99,17 @@ function fillAllCells() {
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
+    /*
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
             mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
         }
+    }
+    */
+    
+    var items = mainGrid.getElementsByTagName("td");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = currentColor;
     }
 }
 
@@ -101,6 +119,7 @@ function fillEmptyCells() {
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
+    /*
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
             if (mainGrid.rows[i].cells[j].style.backgroundColor == defaultColor) {
@@ -108,6 +127,13 @@ function fillEmptyCells() {
             }
         }
     }
+    */
+    
+    var items = mainGrid.querySelectorAll("td.default");
+    for (let i = 0; i < items.length; i++) {
+        items[i].className = currentColor;
+    }
+    
 }
 
 /*

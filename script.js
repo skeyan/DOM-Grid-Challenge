@@ -1,6 +1,4 @@
 
-// a function that will add a row to the grid
-
 let amountOfRows = 2;
 let amountOfColumns = 2;
 
@@ -9,6 +7,9 @@ let amountOfColumns = 2;
 //let currentColor = palette[colorIndex];
 let numColors = 6;
 let currentColor = "default";
+
+let penDown = false;
+
 
 function addRow() {
     // grab the main table and append a row to it with the same number of columns
@@ -29,7 +30,7 @@ function addRow() {
     
     mainGrid.appendChild(newRow);                           // append newRow to mainGrid
     amountOfRows++;                                         // and update the count
-}
+};
 
 function addColumn() {
     
@@ -43,14 +44,15 @@ function addColumn() {
         mainGrid.rows[i].appendChild(cell); 
     }
     amountOfColumns++;
-}
+};
 
 function removeRow() {
+
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     mainGrid.removeChild(mainGrid.lastChild);
     amountOfRows--;
-}
+};
 
 function removeColumn() {
 
@@ -62,7 +64,7 @@ function removeColumn() {
     }
     amountOfColumns--;
 
-}
+};
 
 // function cycleColor() {
     // colorIndex = (colorIndex + 1) % palette.length;
@@ -100,7 +102,7 @@ function clearCells() {
     for (let i = 0; i < items.length; i++) {
         items[i].className = "default";
     }
-}
+};
 
 function fillAllCells() {
 
@@ -112,7 +114,7 @@ function fillAllCells() {
     for (let i = 0; i < items.length; i++) {
         items[i].className = currentColor;
     }
-}
+};
 
 function fillEmptyCells() {
 
@@ -125,7 +127,6 @@ function fillEmptyCells() {
     for (let i = 0; i < items.length; i++) {
         items[i].className = currentColor;
     }
-    
 }
 
 document.addEventListener("mousedown", setPenDown);

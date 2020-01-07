@@ -127,8 +127,7 @@ function fillEmptyCells() {
     for (let i = 0; i < items.length; i++) {
         items[i].className = currentColor;
     }
-};
-
+}
 
 document.addEventListener("mousedown", setPenDown);
 document.addEventListener("mouseup", setPenUp);
@@ -155,4 +154,3 @@ document.addEventListener("mouseover", function( event ) {
         event.target.className = currentColor;
     }
 });
-

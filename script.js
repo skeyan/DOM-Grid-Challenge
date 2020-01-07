@@ -4,12 +4,6 @@
 let amountOfRows = 2;
 let amountOfColumns = 2;
 
-let color1 = "#96e3c0";
-let color2 = "#ffc0cb";
-let color3 = "#7e3f12";
-let color4 = "#cd3333";
-let color5 = "#ee7621";
-// let palette = [color1, color2, color3, color4, color5];
 let palette = ["default", "algae", "pink", "copper", "red", "tango"]
 let colorIndex = 0;
 let currentColor = palette[colorIndex];

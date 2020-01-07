@@ -22,8 +22,6 @@ function addRow() {
     // make the row to be appended to the table on the DOM
     let newRow = document.createElement("tr");              // element is created, but not linked to DOM
     
-
-    
     // populate the row with squares/cells aka TD elements
     // loop through the grid's amountofColumns
     for (let i = 0; i < amountOfColumns; i++) {
@@ -35,8 +33,6 @@ function addRow() {
     mainGrid.appendChild(newRow);                           // append newRow to mainGrid
     amountOfRows++;                                         // and update the count
 }
-
-// once the function is done, need to add the event listener and handler
 
 function addColumn() {
     

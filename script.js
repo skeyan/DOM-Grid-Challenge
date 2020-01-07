@@ -4,7 +4,7 @@
 let amountOfRows = 2;
 let amountOfColumns = 2;
 
-let defaultColor = "#96e3c0";
+let defaultColor = "#e6e6e6";
 let currentColor = "#96e3c0";
 
 let color1 = "#96e3c0";
@@ -78,7 +78,7 @@ function clearCells() {
     
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
-            mainGrid.rows[i].cells[j].style.backgroundColor = 'gray';       // CHANGE TO DEFAULTCOLOR 
+            mainGrid.rows[i].cells[j].style.backgroundColor = defaultColor;
         }
     }
 }
@@ -90,20 +90,36 @@ function fillAllCells() {
     
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
-            mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;       // CHANGE TO DEFAULTCOLOR 
+            mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
         }
     }
 }
 
 function fillEmptyCells() {
 
+    // document.getElementsByTagName("tbody")[0]
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
     for (let i = 0; i < amountOfRows; i++) {
         for (let j = 0; j < amountOfColumns; j++) {
-
-            mainGrid.rows[i].cells[j].style.backgroundColor = "red";       // CHANGE TO DEFAULTCOLOR 
+            if (mainGrid.rows[i].cells[j].style.backgroundColor == defaultColor) {
+                mainGrid.rows[i].cells[j].style.backgroundColor = currentColor;
+            }
         }
     }
 }
+
+/*
+window.addEventListener('click', function(event) {
+    const target = event.target; // what you clicked on
+    if(target.tagName !== 'DIV') {
+        return; // not a <div>, stop the function
+    }
+
+    const color = target.style.color;
+    target.style.color = color? '' : 'red';
+});
+*/
+
+

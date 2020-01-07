@@ -142,17 +142,29 @@ window.addEventListener('click', function(event) {
 });
 */
 
-document.addEventListener('mousedown', setPenDown, false);
-document.addEventListener('mouseup', setPenUp, false);
+document.addEventListener("mousedown", setPenDown);
+document.addEventListener("mouseup", setPenUp);
 
 function setPenDown() {
     penDown = true;
-    // console.log(penDown);
+    console.log(penDown);
 };
 
 function setPenUp() {
     penDown = false;
-    // console.log(penDown);
+    console.log(penDown);
 };
 
+
+// let test = document.querySelector("tbody");
+// ? why doesn't this work? it returns undefined in the script, but works fine when pasted into the console
+
+// attaching an EventListener to the entire document isn't what I want to do, but it's the only way I can get it to work right now
+
+document.addEventListener("mouseover", function( event ) {
+    console.log(event.target.tagName);
+    if (penDown === true && event.target.tagName.toLowerCase() === "td") {
+        event.target.className = currentColor;
+    }
+});
 

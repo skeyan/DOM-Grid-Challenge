@@ -25,6 +25,7 @@ function addRow() {
         var cell = document.createElement("td");
         cell.setAttribute("class", "default");
         cell.setAttribute("onclick", "this.className = currentColor");
+        cell.setAttribute("onmousedown", "this.className = currentColor");
         newRow.appendChild(cell);                           // and appended to newRow
     }
     
@@ -41,6 +42,7 @@ function addColumn() {
         var cell = document.createElement("td");
         cell.setAttribute("class", "default");
         cell.setAttribute("onclick", "this.className = currentColor");
+        cell.setAttribute("onmousedown", "this.className = currentColor");
         mainGrid.rows[i].appendChild(cell); 
     }
     amountOfColumns++;

@@ -67,7 +67,7 @@ function removeColumn() {
 }
 
 function cycleColor() {
-    colorIndex = (colorIndex + 1) % 6;
+    colorIndex = (colorIndex + 1) % palette.length;
     currentColor = palette[colorIndex];
 }
 

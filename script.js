@@ -50,8 +50,10 @@ function removeRow() {
 
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
-    mainGrid.removeChild(mainGrid.lastChild);
-    amountOfRows--;
+    if(amountOfRows > 2) {
+        mainGrid.removeChild(mainGrid.lastChild);
+        amountOfRows--;
+    }
 };
 
 function removeColumn() {
@@ -59,10 +61,12 @@ function removeColumn() {
     let mainGrid = document.getElementById("main-grid");
     mainGrid = mainGrid.getElementsByTagName("tbody")[0];
     
+    if(amountOfColumns > 2) {
     for (let i = 0; i < amountOfRows; i++) {
         mainGrid.rows[i].removeChild(mainGrid.rows[i].lastChild); 
     }
     amountOfColumns--;
+    }   
 
 };
 
